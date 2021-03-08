@@ -14,6 +14,7 @@ class UserModel {
     data['fullname'] = userMap.fullname;
     data['username'] = userMap.username;
     data['emailId'] = userMap.emailId;
+    data['profimg'] = userMap.profimg;
     return data;
   }
 }

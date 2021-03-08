@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthenticationService {
   static AuthenticationService instance = AuthenticationService();
-  static UserModel UserMap = UserModel();
+  static UserModel pvtUserMap = UserModel();
   FirebaseAuth _firebaseAuth;
 
   AuthenticationService() {
@@ -19,18 +19,13 @@ class AuthenticationService {
               email: email, password: password))
           .user;
 
-      UserMap = UserModel(
-          fullname: fullName,
-          username: userName,
-          emailId: email,
-          profimg: "www",
-          profId: user.uid);
       // await user
       //     .updateProfile(displayName: fullName)
       //     .then((value) => passPvtUserInfoToDb(user, fullName, userName));
 
-      await DatabaseService.instance
-          .createPvtUserInDB(UserMap.toMap(UserMap), user.uid);
+      await user
+          .updateProfile(displayName: fullName)
+          .then((value) => UserInfoToDb(user, fullName, userName, email));
 
       if (!user.emailVerified) {
         await user.sendEmailVerification();
@@ -51,7 +46,6 @@ class AuthenticationService {
         final User user = _firebaseAuth.currentUser;
         Constants.uid = user.uid;
 
-        await DatabaseService.instance.cr(user.uid);
         if (user.emailVerified) {
           // await DatabaseService.instance
           //     .getPvtCurrentUserInfo(user.uid)
@@ -71,5 +65,17 @@ class AuthenticationService {
     // ignore: unnecessary_statements
     Constants.uid == null;
     return null;
+  }
+
+  void UserInfoToDb(
+      User user, String fullName, String userName, String email) async {
+    pvtUserMap = UserModel(
+        fullname: fullName,
+        username: userName,
+        emailId: email,
+        profimg: "https://picsum.photos/200/300",
+        profId: user.uid);
+    await DatabaseService.instance
+        .createPvtUserInDB(pvtUserMap.toMap(pvtUserMap), user.uid);
   }
 }
