@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "552368847403",
+    "project_id": "ctu-app-20300",
+    "storage_bucket": "ctu-app-20300.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:552368847403:android:0d0e5b9e812c6dd742086e",
+        "android_client_info": {
+          "package_name": "com.example.ctu_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "552368847403-4ltrrqi7fh02hu8m6n42v87ltuc1h1ph.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOZWcrtZ_ziWxeUtsKMyVRG3Vd6_VWV38"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "552368847403-4ltrrqi7fh02hu8m6n42v87ltuc1h1ph.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
